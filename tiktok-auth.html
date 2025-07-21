@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Authorization Received</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 5rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    code {
+      background: #eee;
+      padding: 0.3rem 0.5rem;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✅ TikTok Authorization Complete</h1>
+    <p>If this window does not close automatically, you may close it manually.</p>
+    <p>Your authorization code:</p>
+    <code id="authCode">Loading...</code>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    document.getElementById('authCode').textContent = code || 'No code found';
+
+    // Optional: send to your webhook/backend automatically
+    // fetch('https://your-backend.com/oauth/tiktok', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ code })
+    // });
+  </script>
+</body>
+</html>
